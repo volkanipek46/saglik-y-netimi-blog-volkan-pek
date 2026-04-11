@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volkan İpek | Sağlık Yönetimi Blog Platformu</title>
+<meta name="description" content="Sağlık yönetimi alanında akademik bilgi, kariyer rehberi ve güncel politika analizleri. Öğrenciler ve sektör profesyonelleri için.">
+<meta name="keywords" content="sağlık yönetimi, hastane yönetimi, sağlık politikası, dijital sağlık, sağlık ekonomisi, Türkiye sağlık sistemi">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1923;
+    --paper: #f5f0e8;
+    --cream: #ede8dc;
+    --rust: #c0392b;
+    --rust-light: #e74c3c;
+    --teal: #1a6b6b;
+    --teal-light: #2e8b8b;
+    --gold: #c9a84c;
+    --muted: #6b6255;
+    --border: rgba(15,25,35,0.12);
+    --card-bg: #faf7f2;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+    border-bottom: 3px solid var(--rust);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .masthead-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    color: var(--paper);
+    text-decoration: none;
+  }
+
+  .masthead-logo span {
+    color: var(--rust);
+    font-style: italic;
+  }
+
+  .masthead-nav {
+    display: flex;
+    gap: 1.8rem;
+    list-style: none;
+  }
+
+  .masthead-nav a {
+    color: var(--paper);
+    opacity: 0.75;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+
+  .masthead-nav a:hover { opacity: 1; }
+
+  /* ── HERO BAND ── */
+  .hero-band {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.015) 40px,
+      rgba(255,255,255,0.015) 41px
+    );
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 0.3rem 0.9rem;
+    margin-bottom: 1.5rem;
+    border-radius: 2px;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    max-width: 700px;
+    margin: 0 auto 1rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    opacity: 0.65;
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    opacity: 0.8;
+  }
+
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--rust);
+    color: white;
+    padding: 0.45rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 30s linear infinite;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    font-family: 'DM Mono', monospace;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(100vw); }
+    to { transform: translateX(-100%); }
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 2rem; }
+
+  .section { padding: 4rem 0; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 1rem;
+  }
+
+  /* ── CATEGORIES GRID ── */
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 4rem;
+  }
+
+  .cat-card {
+    background: var(--card-bg);
+    padding: 1.6rem 1.4rem;
+    cursor: default;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .cat-card:hover { background: var(--cream); }
+
+  .cat-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .cat-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+  }
+
+  .cat-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--ink);
+  }
+
+  .cat-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── CONTENT CALENDAR ── */
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .week-card {
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+  }
+
+  .week-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.7rem 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .week-header-num {
+    background: var(--rust);
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 600;
+  }
+
+  .week-posts { padding: 1rem; }
+
+  .week-post {
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed var(--border);
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .week-post:last-child { border-bottom: none; }
+
+  .post-day {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--rust);
+    letter-spacing: 0.05em;
+    min-width: 28px;
+    margin-top: 2px;
+    text-transform: uppercase;
+  }
+
+  .post-title-small {
+    font-size: 0.79rem;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+
+  .post-cat-tag {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-family: 'DM Mono', monospace;
+    background: var(--cream);
+    color: var(--teal);
+    border-radius: 2px;
+    padding: 0.1rem 0.4rem;
+    margin-top: 0.2rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── FEATURED ARTICLE ── */
+  .article-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .article-main { }
+
+  .article-header {
+    border-left: 4px solid var(--rust);
+    padding-left: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .article-cats {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+  }
+
+  .article-cat {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal);
+    background: rgba(26,107,107,0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+  }
+
+  .article-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.1rem;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 0.6rem;
+  }
+
+  .article-meta {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .article-meta span::before { content: '· '; }
+  .article-meta span:first-child::before { content: ''; }
+
+  .article-lead {
+    font-size: 1.08rem;
+    font-weight: 500;
+    line-height: 1.7;
+    color: var(--ink);
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding: 1rem 1.2rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .article-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 2rem 0 0.8rem;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .article-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .article-body p {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    color: #2a2a2a;
+    margin-bottom: 1.1rem;
+  }
+
+  .article-body ul {
+    margin: 0.8rem 0 1.2rem 1.2rem;
+  }
+
+  .article-body li {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #2a2a2a;
+    margin-bottom: 0.4rem;
+  }
+
+  .data-box {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1.2rem 1.4rem;
+    margin: 1.5rem 0;
+    border-radius: 2px;
+  }
+
+  .data-box-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.83rem;
+  }
+
+  .data-row:last-child { border-bottom: none; }
+
+  .data-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .callout {
+    border: 2px solid var(--rust);
+    padding: 1.2rem 1.4rem;
+    margin: 1.5rem 0;
+    background: rgba(192,57,43,0.04);
+  }
+
+  .callout-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.4rem;
+  }
+
+  .callout p {
+    font-size: 0.9rem !important;
+    color: var(--ink) !important;
+  }
+
+  .article-conclusion {
+    background: var(--teal);
+    color: white;
+    padding: 1.5rem 1.6rem;
+    margin-top: 2rem;
+    border-radius: 2px;
+  }
+
+  .article-conclusion h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+    color: #a8d8d8;
+  }
+
+  .article-conclusion p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    opacity: 0.9;
+    margin-bottom: 0 !important;
+    color: white !important;
+  }
+
+  .cta-comment {
+    background: var(--cream);
+    border: 1px dashed var(--border);
+    padding: 1.2rem 1.4rem;
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .cta-comment p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 0 !important;
+  }
+
+  .cta-comment strong { color: var(--ink); }
+
+  /* ── SIDEBAR ── */
+  .sidebar { position: sticky; top: 72px; }
+
+  .sidebar-block {
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    margin-bottom: 1.5rem;
+  }
+
+  .sidebar-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.6rem 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .sidebar-body { padding: 1rem; }
+
+  .about-text {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+  }
+
+  .profile-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .profile-avatar {
+    width: 42px;
+    height: 42px;
+    background: var(--teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: white;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .profile-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: block;
+  }
+
+  .profile-role {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .keyword-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .kw {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--border);
+    padding: 0.25rem 0.5rem;
+    border-radius: 2px;
+    color: var(--teal);
+    background: rgba(26,107,107,0.05);
+  }
+
+  .social-share { }
+
+  .share-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .share-text {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--ink);
+    background: var(--cream);
+    padding: 0.7rem;
+    border-radius: 2px;
+    border-left: 3px solid var(--gold);
+    font-style: italic;
+  }
+
+  /* ── NAMES SECTION ── */
+  .names-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .name-opt {
+    background: var(--card-bg);
+    padding: 1.4rem 1rem;
+    text-align: center;
+    transition: background 0.2s;
+  }
+
+  .name-opt:hover { background: var(--cream); }
+
+  .name-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.3rem;
+    color: var(--ink);
+  }
+
+  .name-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  .name-badge {
+    display: inline-block;
+    background: var(--rust);
+    color: white;
+    font-size: 0.55rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+    margin-top: 0.4rem;
+  }
+
+  /* ── AUDIENCE BLOCKS ── */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .aud-block {
+    padding: 1.4rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .aud-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(15,25,35,0.06);
+    position: absolute;
+    top: 0.5rem;
+    right: 0.8rem;
+    line-height: 1;
+  }
+
+  .aud-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+
+  .aud-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .aud-desc {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3rem 2rem 2rem;
+    margin-top: 4rem;
+  }
+
+  .footer-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 0.7rem;
+  }
+
+  .footer-brand span { color: var(--rust); font-style: italic; }
+
+  .footer-tagline {
+    font-size: 0.82rem;
+    opacity: 0.55;
+    line-height: 1.6;
+    max-width: 280px;
+  }
+
+  .footer-col-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.4rem; }
+  .footer-links a {
+    font-size: 0.82rem;
+    color: var(--paper);
+    opacity: 0.6;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .footer-links a:hover { opacity: 1; }
+
+  .footer-bottom {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+    opacity: 0.4;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ── UTILS ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 3rem 0;
+  }
+
+  @media (max-width: 900px) {
+    .article-wrapper { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .calendar-grid { grid-template-columns: repeat(2, 1fr); }
+    .names-grid { grid-template-columns: repeat(3, 1fr); }
+    .audience-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  @media (max-width: 600px) {
+    .masthead-nav { display: none; }
+    .hero-stats { gap: 1.5rem; }
+    .calendar-grid { grid-template-columns: 1fr; }
+    .names-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<nav class="masthead">
+  <a class="masthead-logo" href="#">Volkan<span> İpek</span></a>
+  <ul class="masthead-nav">
+    <li><a href="#kategoriler">Kategoriler</a></li>
+    <li><a href="#takvim">İçerik Takvimi</a></li>
+    <li><a href="#yazi">İlk Yazı</a></li>
+    <li><a href="#hakkinda">Hakkında</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero-band">
+  <p class="hero-tag">Sağlık Yönetimi · Akademik Blog Platformu</p>
+  <h1 class="hero-title">Sağlığı<em> yönetmek</em><br>bir bilim, bir sanat.</h1>
+  <p class="hero-sub">Politika analizinden hastane yönetimine, dijital sağlıktan kariyer rehberine — kapsamlı bir akademik içerik platformu.</p>
+  <div class="hero-stats">
+    <div>
+      <span class="hero-stat-num">8</span>
+      <span class="hero-stat-label">Kategori</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">9</span>
+      <span class="hero-stat-label">Aylık Yazı</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">3</span>
+      <span class="hero-stat-label">Hedef Kitle</span>
+    </div>
+  </div>
+</header>
+
+<!-- TICKER -->
+<div class="ticker">
+  <span class="ticker-inner">
+    ◆ Türkiye'de sağlık harcamaları GSYİH'nin %4.6'sı · ◆ Dijital sağlık pazarı 2025'te 660 milyar dolara ulaştı · ◆ SGK aktüeryal dengesi tartışmalarda · ◆ Şehir Hastaneleri modeli sorgulanıyor · ◆ Sağlık turizmi geliri rekor seviyelerde · ◆ Yeni tıp fakültesi açılışları sektörü etkiliyor · ◆ Yapay zeka tanı sistemleri yaygınlaşıyor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>
+</div>
+
+<!-- BLOG NAMES -->
+<section class="section" id="isimler">
+  <div class="container">
+    <!-- AUDIENCE -->
+    <span class="section-label">02 · Hedef Kitle</span>
+    <h2 class="section-title">Blogun Sesleneceği Okuyucular</h2>
+
+    <div class="audience-grid">
+      <div class="aud-block">
+        <span class="aud-num">1</span>
+        <div class="aud-icon">🎓</div>
+        <h3 class="aud-title">Öğrenciler</h3>
+        <p class="aud-desc">Sağlık yönetimi, halk sağlığı ve tıp fakültesi öğrencileri. Staj rehberleri, ders notları, kariyer tavsiyeleri ve bölüm tanıtımları arayan genç okuyucular.</p>
+      </div>
+      <div class="aud-block">
+        <span class="aud-num">2</span>
+        <div class="aud-icon">🏥</div>
+        <h3 class="aud-title">Sektör Profesyonelleri</h3>
+        <p class="aud-desc">Hastane yöneticileri, sağlık politikası uzmanları, klinik direktörler ve SGK müdürleri. Güncel politika analizleri ve vaka çalışmaları arayan deneyimliler.</p>
+      </div>
+      <div class="aud-block">
+        <span class="aud-num">3</span>
+        <div class="aud-icon">📚</div>
+        <h3 class="aud-title">Akademisyenler</h3>
+        <p class="aud-desc">Araştırmacılar, öğretim üyeleri ve doktora öğrencileri. Literatür takibi, politika karşılaştırmaları ve tartışmaya değer tezler arayan akademik çevre.</p>
+      </div>
+    </div>
+
+    <!-- VISION -->
+    <div class="data-box" style="max-width:800px;">
+      <div class="data-box-title">📌 Blogun Amacı & Vizyonu</div>
+      <p style="font-size:0.9rem; line-height:1.7; opacity:0.9; color: var(--paper);">
+        Volkan İpek Sağlık Yönetimi, sağlık yönetimi alanındaki akademik bilgiyi gündelik dile taşıyan, eleştirel bir bakış açısıyla Türkiye ve dünya sağlık sistemlerini inceleyen bir platform olmayı hedefler. Beş yıl içinde sektörde <strong style="color:var(--gold);">başvurulan kaynak</strong> haline gelmek, açık erişim içerik anlayışıyla bilgiyi demokratikleştirmek ve okuyucuyu pasif tüketici değil aktif düşünür olarak konumlandırmak temel vizyondur.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section" id="kategoriler" style="background:var(--cream);">
+  <div class="container">
+    <span class="section-label">03 · Kategori Yapısı</span>
+    <h2 class="section-title">8 Ana Kategori</h2>
+
+    <div class="categories-grid">
+      <div class="cat-card">
+        <span class="cat-num">01</span>
+        <span class="cat-icon">🏛️</span>
+        <div class="cat-name">Sağlık Sistemleri ve Politikalar</div>
+        <div class="cat-desc">Türkiye ve dünya sağlık sistemlerinin karşılaştırmalı analizi, reform süreçleri, SGK politikaları ve yasama takibi.</div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-num">02</span>
+        <span class="cat-icon">🏥</span>
+        <div class="cat-name">Hastane Yönetimi</div>
+        <div class="cat-desc">Operasyonel verimlilik, şehir hastaneleri modeli, insan kaynakları yönetimi ve liderlik yaklaşımları.</div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-num">03</span>
+        <span class="cat-icon">💰</span>
+        <div class="cat-name">Sağlık Ekonomisi</div>
+        <div class="cat-desc">Maliyet-etkililik analizleri, ilaç fiyatlandırması, sağlık harcama eğilimleri ve finansman modelleri.</div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-num">04</span>
+        <span class="cat-icon">💻</span>
+        <div class="cat-name">Dijital Sağlık ve Teknoloji</div>
+        <div class="cat-desc">Yapay zeka uygulamaları, e-Nabız sistemi, telemedicine, EHR sistemleri ve sağlık verisi güvenliği.</div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-num">05</span>
+        <span class="cat-icon">⚖️</span>
+        <div class="cat-name">Etik ve Hasta Hakları</div>
+        <div class="cat-desc">Tıbbi etik ikilemleri, hasta veri mahremiyeti, aydınlatılmış onam ve şikâyet mekanizmaları.</div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-num">06</span>
+        <span class="cat-icon">🚀</span>
+        <div class="cat-name">Kariyer ve Mezuniyet Sonrası</div>
+        <div class="cat-desc">Sağlık yöneticisi olma yolu, sertifika programları, yüksek lisans seçenekleri ve sektör ağı kurma stratejileri.</div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-num">07</span>
+        <span class="cat-icon">📋</span>
+        <div class="cat-name">Staj ve Deneyimler</div>
+        <div class="cat-desc">Öğrenci staj deneyimleri, hastane gözlemleri, sahadan notlar ve gerçek vaka anlatıları.</div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-num">08</span>
+        <span class="cat-icon">📰</span>
+        <div class="cat-name">Güncel Sağlık Gündemi</div>
+        <div class="cat-desc">Haftanın sağlık haberleri analizi, yeni yönetmelikler, kongre özetleri ve hızlı değerlendirmeler.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT CALENDAR -->
+<section class="section" id="takvim">
+  <div class="container">
+    <span class="section-label">04 · 1 Aylık İçerik Takvimi</span>
+    <h2 class="section-title">Nisan 2025 — Yayın Planı</h2>
+
+    <div class="calendar-grid">
+      <div class="week-card">
+        <div class="week-header">
+          1. Hafta <span class="week-header-num">2</span>
+        </div>
+        <div class="week-posts">
+          <div class="week-post">
+            <span class="post-day">Sal</span>
+            <div>
+              <div class="post-title-small">Türkiye'de Sağlık Sisteminin Yapısı ve Güncel Sorunlar</div>
+              <span class="post-cat-tag">Sağlık Sistemleri</span>
+            </div>
+          </div>
+          <div class="week-post">
+            <span class="post-day">Cum</span>
+            <div>
+              <div class="post-title-small">Şehir Hastaneleri: Devrim mi, Borç Tuzağı mı?</div>
+              <span class="post-cat-tag">Hastane Yönetimi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-header">
+          2. Hafta <span class="week-header-num">2</span>
+        </div>
+        <div class="week-posts">
+          <div class="week-post">
+            <span class="post-day">Sal</span>
+            <div>
+              <div class="post-title-small">e-Nabız'dan Yapay Zeka'ya: Sağlıkta Dijital Dönüşüm</div>
+              <span class="post-cat-tag">Dijital Sağlık</span>
+            </div>
+          </div>
+          <div class="week-post">
+            <span class="post-day">Per</span>
+            <div>
+              <div class="post-title-small">Staj Günlüğü: İlk Haftam Hastanede</div>
+              <span class="post-cat-tag">Staj Deneyimi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-header">
+          3. Hafta <span class="week-header-num">3</span>
+        </div>
+        <div class="week-posts">
+          <div class="week-post">
+            <span class="post-day">Sal</span>
+            <div>
+              <div class="post-title-small">SGK'nın Sürdürülebilirliği: Veriler Ne Söylüyor?</div>
+              <span class="post-cat-tag">Sağlık Ekonomisi</span>
+            </div>
+          </div>
+          <div class="week-post">
+            <span class="post-day">Per</span>
+            <div>
+              <div class="post-title-small">Hasta Hakları Kanunu: Kâğıtta mı, Pratikte mi?</div>
+              <span class="post-cat-tag">Etik & Haklar</span>
+            </div>
+          </div>
+          <div class="week-post">
+            <span class="post-day">Cum</span>
+            <div>
+              <div class="post-title-small">Bu Haftanın Sağlık Haberleri Özeti</div>
+              <span class="post-cat-tag">Gündem</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-header">
+          4. Hafta <span class="week-header-num">2</span>
+        </div>
+        <div class="week-posts">
+          <div class="week-post">
+            <span class="post-day">Sal</span>
+            <div>
+              <div class="post-title-small">Sağlık Yönetimi Mezunu Ne İş Yapar?</div>
+              <span class="post-cat-tag">Kariyer</span>
+            </div>
+          </div>
+          <div class="week-post">
+            <span class="post-day">Cum</span>
+            <div>
+              <div class="post-title-small">Telemedicine: Türkiye'nin Geri Kaldığı Cephe</div>
+              <span class="post-cat-tag">Dijital Sağlık</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED ARTICLE -->
+<section class="section" id="yazi" style="background:var(--cream);">
+  <div class="container">
+    <span class="section-label">05 · İlk Blog Yazısı</span>
+    <h2 class="section-title">Öne Çıkan İçerik</h2>
+
+    <div class="article-wrapper">
+      <!-- MAIN ARTICLE -->
+      <article class="article-main">
+        <div class="article-header">
+          <div class="article-cats">
+            <span class="article-cat">Sağlık Sistemleri</span>
+            <span class="article-cat">Politika Analizi</span>
+            <span class="article-cat">Türkiye</span>
+          </div>
+          <h1 class="article-title">Türkiye'de Sağlık Sisteminin Yapısı ve Güncel Sorunlar</h1>
+          <div class="article-meta">
+            <span>Nisan 2025</span>
+            <span>Volkan İpek</span>
+            <span>~9 dk okuma</span>
+            <span>1.234 görüntülenme</span>
+          </div>
+        </div>
+
+        <div class="article-body">
+
+          <div class="article-lead">
+            Sağlık ocağındaki bekleme sırası, şehir hastanesinin cam kulesinin gölgesinde uzuyor. Bir tarafta trilyonluk altyapı yatırımı, diğer tarafta birinci basamakta kronik işgücü açığı. Türkiye'nin sağlık sistemi, aynı anda hem gurur kaynağı hem de kronik çelişkiler yumağı.
+          </div>
+
+          <h2 class="article-section-title">Kısa Tarihçe: Nereden Nereye?</h2>
+
+          <p>Türkiye, 2003 yılında başlatılan <strong>Sağlıkta Dönüşüm Programı (SDP)</strong> ile köklü bir dönüşüm yaşadı. SDP öncesinde pek çok farklı sigorta fonuna bölünmüş olan sistem, Sosyal Güvenlik Kurumu (SGK) çatısı altında birleştirildi. Aile hekimliği modeline geçildi, yeşil kart kapsamı genişletildi ve şehir hastaneleri projesinin temelleri atıldı.</p>
+
+          <p>Bu dönüşüm somut çıktılar üretti: Anne ölüm oranları dramatik biçimde düştü, kişi başı hekim başvurusu 3'ten 9'un üzerine çıktı, bebek ölüm hızı yarıya indi. Dünya Sağlık Örgütü, Türkiye'yi bu dönemde başarılı bir reform modeli olarak sundu.</p>
+
+          <p>Peki bugün tablonun tamamına baktığımızda ne görüyoruz?</p>
+
+          <div class="data-box">
+            <div class="data-box-title">📊 Türkiye Sağlık Sistemi — Temel Göstergeler (2024)</div>
+            <div class="data-row"><span>Sağlık Harcaması / GSYİH</span><span class="data-val">%4,6</span></div>
+            <div class="data-row"><span>Kişi başı hekim başvurusu (yıl)</span><span class="data-val">9,1</span></div>
+            <div class="data-row"><span>1.000 kişiye düşen yatak sayısı</span><span class="data-val">2,9</span></div>
+            <div class="data-row"><span>SGK sağlık harcaması (milyar ₺)</span><span class="data-val">~780</span></div>
+            <div class="data-row"><span>Özel hastane sayısı</span><span class="data-val">571</span></div>
+            <div class="data-row"><span>Şehir hastanesi (aktif)</span><span class="data-val">31</span></div>
+          </div>
+
+          <h2 class="article-section-title">Sistemin Omurgası: Kim Yönetiyor?</h2>
+
+          <p>Türkiye sağlık sistemi merkezi bir yapıya sahip. <strong>Sağlık Bakanlığı</strong>, ikinci ve üçüncü basamak hizmetlerin büyük bölümünü doğrudan sunuyor; birinci basamak ise Aile Hekimliği sistemi üzerinden organize edilmiş durumda. <strong>SGK</strong> ise finansman ve satın alma fonksiyonunu üstleniyor.</p>
+
+          <p>Teoride bu ayrım işlevsel görünüyor. Sağlık sunucusu ile finansörünün ayrışması, hesap verebilirlik açısından değerli bir adım. Ancak pratikte koordinasyon sorunları, çift başlılık ve taşeron süreçlerdeki belirsizlikler önemli boşluklar yaratıyor.</p>
+
+          <h2 class="article-section-title">Başlıca Yapısal Sorunlar</h2>
+
+          <p>Sorunları kategorize etmek gerekirse üç ana eksende ele alabiliriz:</p>
+
+          <ul>
+            <li><strong>Finansman baskısı:</strong> SGK'nın sağlık harcamaları her yıl artış gösteriyor. Nüfusun yaşlanması, kronik hastalık yükünün artması ve ilaç maliyetleri, fon dengesini yapısal olarak zorlayan faktörler arasında yer alıyor. Prim gelirlerinin yeterli olmadığı dönemlerde hazine transferleri ile sistemin sürdürüldüğü biliniyor.</li>
+            <li><strong>Birinci basamakta yetersizlik:</strong> Aile hekimliğinin sağlam bir filtre görevi üstlenmesi beklenirken, vatandaşların önemli bir kısmı doğrudan hastane acil servislerine yönelmeyi tercih ediyor. Bu hem kaynak israfına yol açıyor hem de acil kapasitesini gereksiz yere zorluyor.</li>
+            <li><strong>İş gücü dengesizliği:</strong> Uzman hekimlerin büyük şehirlerde yoğunlaşması, Doğu ve Güneydoğu illerinde kritik sağlık açıkları doğuruyor. Hekim dağılımı problemi, bölgesel eşitsizlikleri derinleştiriyor.</li>
+          </ul>
+
+          <div class="callout">
+            <div class="callout-label">⚠️ Kritik Gözlem</div>
+            <p>Türkiye, OECD ülkeleri arasında birinci basamak hizmetlerin en az kullanıldığı ülkeler arasında yer alıyor. Bu durum, yatırımların görünürdeki başarısının altında gizlenen sistemik bir çarpıklığa işaret ediyor.</p>
+          </div>
+
+          <h2 class="article-section-title">Şehir Hastaneleri: Vizyon mu, Yük mü?</h2>
+
+          <p>Şehir hastaneleri projesi, Türkiye'nin en tartışmalı sağlık politikası haline geldi. Kamu-özel ortaklığı (KÖO) modeliyle inşa edilen bu devasa kompleksler, modern tıbbi altyapı sunuyor; ancak kira garantisi mekanizması ve uzun dönemli finansal yükümlülükler, eleştirilerin odağında.</p>
+
+          <p>Öte yandan şehir hastaneleri, bazı bölgelerde gerçek anlamda bir erişim devrimi yarattı. Kapasite artışı ve teknolojik altyapı açısından değerlendirildiğinde katkıları inkâr edilemez. Asıl tartışılması gereken, bu modelin toplam maliyetiyle sağladığı faydanın bütünsel bir sağlık sistemi içinde nasıl konumlandırıldığı.</p>
+
+          <h2 class="article-section-title">Dijital Sağlığa Geçişte Neredeyiz?</h2>
+
+          <p>e-Nabız platformu ve MHRS sistemi, dijital altyapı açısından önemli adımlar. Ancak birlikte çalışabilirlik (interoperability) sorunları, veri siloları ve sağlık bilişimi konusunda yetişmiş işgücünün yetersizliği, dijital dönüşümün hızını frenliyor. Yapay zeka tanı sistemleri bazı pilot hastanelerde test edilse de yaygın klinik entegrasyon henüz gerçekleşmedi.</p>
+
+          <div class="article-conclusion">
+            <h3>Sonuç ve Değerlendirme</h3>
+            <p>Türkiye'nin sağlık sistemi, iki dekadı aşan reform sürecinin ardından hâlâ inşa halinde. Makro göstergeler tablonun bir yarısını gösteriyor; ancak birinci basamak yetersizlikleri, finansman sürdürülebilirliği ve bölgesel eşitsizlikler öte yanda duruyor. Bir sağlık yönetimi öğrencisi olarak ben şunu soruyorum: Yatırımların nereye yapıldığı kadar kimin bu yatırımlardan gerçekten yararlandığı da hesaba katılıyor mu? Cevap, henüz net değil.</p>
+          </div>
+
+          <div class="cta-comment">
+            <p>💬 <strong>Siz ne düşünüyorsunuz?</strong> Türkiye sağlık sisteminin en kritik sorunu sizce hangisi? Aşağıya yorum bırakın veya bu yazıyı bir sağlık öğrencisiyle paylaşın — tartışmak için daha iyi bir konu bulmak zor!</p>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+
+        <div class="sidebar-block">
+          <div class="sidebar-header">Blog Hakkında</div>
+          <div class="sidebar-body">
+            <p class="about-text">Volkan İpek Sağlık Yönetimi, sağlık yönetimi alanındaki akademik bilgiyi anlaşılır bir dille sunan, öğrenci bakışıyla sektörü sorgulayan bir platform.</p>
+            <div class="profile-row">
+              <div class="profile-avatar">K</div>
+              <div>
+                <span class="profile-name">Volkan İpek</span>
+                <span class="profile-role">Sağlık Yönetimi Öğrencisi · 3. Sınıf</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <div class="sidebar-header">SEO Anahtar Kelimeler</div>
+          <div class="sidebar-body">
+            <div class="keyword-cloud">
+              <span class="kw">sağlık yönetimi</span>
+              <span class="kw">Türkiye sağlık sistemi</span>
+              <span class="kw">SGK reform</span>
+              <span class="kw">hastane yönetimi</span>
+              <span class="kw">şehir hastaneleri</span>
+              <span class="kw">sağlık politikası</span>
+              <span class="kw">dijital sağlık</span>
+              <span class="kw">e-nabız</span>
+              <span class="kw">aile hekimliği</span>
+              <span class="kw">sağlık ekonomisi</span>
+              <span class="kw">KÖO model</span>
+              <span class="kw">sağlıkta dönüşüm</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <div class="sidebar-header">Sosyal Medya Metni</div>
+          <div class="sidebar-body">
+            <div class="social-share">
+              <div class="share-title">Twitter / X için</div>
+              <div class="share-text">
+                "Türkiye sağlık sistemi başarılı mı gerçekten? Verilerin söylemediğini yazıyor olabiliriz. 🏥 Şehir hastanelerinden SGK baskısına, birinci basamak krizinden dijital dönüşüme — yeni yazı Volkan İpek Sağlık Yönetimi'nde! #SağlıkYönetimi #SağlıkPolitikası"
+              </div>
+              <br>
+              <div class="share-title">LinkedIn için</div>
+              <div class="share-text">
+                "Türkiye'nin sağlık sistemi, 20 yıllık reform sürecinin ardından ne durumda? KÖO modeli, SGK sürdürülebilirliği ve birinci basamak krizi üzerine eleştirel bir analiz. Sektör profesyonellerinin görüşlerini merak ediyorum 👇"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <div class="sidebar-header">SEO Başlık Alternatifleri</div>
+          <div class="sidebar-body">
+            <div style="font-size:0.78rem; color:var(--muted); line-height:1.8;">
+              <div style="padding:0.35rem 0; border-bottom:1px dashed var(--border);">① Türkiye Sağlık Sisteminin Yapısı: Sorunlar ve Çözümler [2025]</div>
+              <div style="padding:0.35rem 0; border-bottom:1px dashed var(--border);">② SGK ve Şehir Hastaneleri: Türkiye Sağlık Sistemini Anlama Rehberi</div>
+              <div style="padding:0.35rem 0;">③ Türkiye'de Sağlık Politikası: Başarılar, Sorunlar, Gelecek</div>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Volkan<span> İpek</span></div>
+      <p class="footer-tagline">Sağlık yönetimini akademik titizlik ve öğrenci perspektifiyle mercek altına alan bağımsız bir içerik platformu.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Kategoriler</div>
+      <ul class="footer-links">
+        <li><a href="#">Sağlık Sistemleri</a></li>
+        <li><a href="#">Hastane Yönetimi</a></li>
+        <li><a href="#">Sağlık Ekonomisi</a></li>
+        <li><a href="#">Dijital Sağlık</a></li>
+        <li><a href="#">Etik & Hasta Hakları</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Platform</div>
+      <ul class="footer-links">
+        <li><a href="#">Hakkında</a></li>
+        <li><a href="#">İçerik Takvimi</a></li>
+        <li><a href="#">Kariyer Rehberi</a></li>
+        <li><a href="#">Staj Deneyimleri</a></li>
+        <li><a href="#">İletişim</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Volkan İpek · Sağlık Yönetimi Blog Platformu</span>
+    <span>akademik · eleştirel · bağımsız</span>
+  </div>
+</footer>
+
+</body>
+</html>
